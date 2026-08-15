@@ -49,6 +49,42 @@
     "hideTable": "Hide Table",
     "times": "×"
   },
+  "addition": {
+    "title": "Addition",
+    "selectLevel": "Select level or practice",
+    "level": "Level {{n}}",
+    "currentLevel": "Current level: {{n}}",
+    "points": "Points: {{points}}",
+    "toNextLevel": "To next level: {{remaining}} points",
+    "levelUp": "Congratulations! You reached level {{n}}! 🎉",
+    "learn": "Learn",
+    "practice": "Practice",
+    "back": "Back",
+    "question": "What is {{a}} + {{b}}?",
+    "check": "Check",
+    "next": "Next",
+    "correct": "Correct! 🎉",
+    "wrong": "Oops! The answer is {{answer}}",
+    "score": "Score: {{score}} / {{total}}",
+    "finish": "Finish Practice",
+    "tryAgain": "Try Again",
+    "greatJob": "Great job, {{name}}!",
+    "youScored": "You scored {{score}} out of {{total}}",
+    "pointsEarned": "+{{points}} points earned!",
+    "continue": "Continue",
+    "examples": "Examples",
+    "levelDesc1": "Small numbers (1-10)",
+    "levelDesc2": "Medium numbers (1-20)",
+    "levelDesc3": "Larger numbers (1-50)",
+    "levelDesc4": "Hundreds (1-100)",
+    "levelDesc5": "Mixed and hard"
+  },
+  "levels": {
+    "level": "Level",
+    "points": "Points",
+    "locked": "Locked",
+    "unlocked": "Unlocked"
+  },
   "common": {
     "loading": "Loading..."
   }
