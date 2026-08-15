@@ -4,10 +4,21 @@ import { useUser } from './hooks/useUser'
 import Welcome from './components/Welcome'
 import Home from './components/Home'
 import MultiplicationModule from './components/MultiplicationModule'
+import AdditionModule from './components/AdditionModule'
 
 function App() {
   const { t } = useTranslation()
-  const { user, loading, login, logout, updateProgress, isLoggedIn } = useUser()
+  const {
+    user,
+    loading,
+    login,
+    logout,
+    updateMultiplicationProgress,
+    addPoints,
+    getModuleProgress,
+    getPointsToNextLevel,
+    isLoggedIn,
+  } = useUser()
   const [currentModule, setCurrentModule] = useState(null)
 
   if (loading) {
@@ -29,7 +40,20 @@ function App() {
       <MultiplicationModule
         user={user}
         onBack={() => setCurrentModule(null)}
-        onUpdateProgress={updateProgress}
+        onUpdateProgress={updateMultiplicationProgress}
+        addPoints={addPoints}
+      />
+    )
+  }
+
+  if (currentModule === 'addition') {
+    return (
+      <AdditionModule
+        user={user}
+        onBack={() => setCurrentModule(null)}
+        addPoints={addPoints}
+        getModuleProgress={getModuleProgress}
+        getPointsToNextLevel={getPointsToNextLevel}
       />
     )
   }
@@ -39,6 +63,7 @@ function App() {
       user={user}
       onSelectModule={setCurrentModule}
       onLogout={logout}
+      getModuleProgress={getModuleProgress}
     />
   )
 }
