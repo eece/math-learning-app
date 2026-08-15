@@ -2,6 +2,16 @@ import { useState, useEffect, useCallback } from 'react'
 
 const STORAGE_KEY = 'mathApp_user'
 
+// Level thresholds (cumulative points needed to reach that level)
+const LEVEL_THRESHOLDS = [0, 0, 80, 200, 400, 700] // index 1=level1, 2=level2...
+
+const defaultModuleProgress = () => ({
+  points: 0,
+  level: 1,
+  practiced: 0,
+  correct: 0,
+})
+
 const defaultProgress = () => ({
   multiplication: {
     tables: Object.fromEntries(
@@ -11,8 +21,26 @@ const defaultProgress = () => ({
       ])
     ),
     totalStars: 0,
+    points: 0,
+    level: 1,
   },
+  addition: defaultModuleProgress(),
 })
+
+function ensureProgress(user) {
+  if (!user.progress) user.progress = defaultProgress()
+  if (!user.progress.multiplication) {
+    user.progress.multiplication = defaultProgress().multiplication
+  }
+  if (!user.progress.addition) {
+    user.progress.addition = defaultModuleProgress()
+  }
+  if (user.progress.multiplication.points === undefined) {
+    user.progress.multiplication.points = 0
+    user.progress.multiplication.level = 1
+  }
+  return user
+}
 
 export function useUser() {
   const [user, setUser] = useState(null)
@@ -22,12 +50,7 @@ export function useUser() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY)
       if (raw) {
-        const parsed = JSON.parse(raw)
-        // Ensure progress structure exists
-        if (!parsed.progress) parsed.progress = defaultProgress()
-        if (!parsed.progress.multiplication) {
-          parsed.progress.multiplication = defaultProgress().multiplication
-        }
+        const parsed = ensureProgress(JSON.parse(raw))
         setUser(parsed)
       }
     } catch (e) {
@@ -56,7 +79,7 @@ export function useUser() {
     setUser(null)
   }, [])
 
-  const updateProgress = useCallback((module, table, correctCount, totalQuestions) => {
+  const updateMultiplicationProgress = useCallback((table, correctCount, totalQuestions) => {
     if (!user) return
 
     const scorePercent = Math.round((correctCount / totalQuestions) * 100)
@@ -65,14 +88,11 @@ export function useUser() {
     else if (scorePercent >= 70) stars = 2
     else if (scorePercent >= 50) stars = 1
 
-    const updated = { ...user }
+    const updated = ensureProgress({ ...user })
     const mult = { ...updated.progress.multiplication }
     const tables = { ...mult.tables }
 
-    if (table === 'all') {
-      // Update overall or average - for simplicity, give stars to a special key or just total
-      mult.totalStars = Math.max(mult.totalStars || 0, stars)
-    } else {
+    if (table !== 'all') {
       const t = { ...tables[table] }
       t.practiced += 1
       t.correct += correctCount
@@ -80,21 +100,72 @@ export function useUser() {
       t.stars = Math.max(t.stars || 0, stars)
       tables[table] = t
       mult.tables = tables
-
-      // Recalculate total stars
       mult.totalStars = Object.values(tables).reduce((sum, tb) => sum + (tb.stars || 0), 0)
     }
+
+    const pointsGained = correctCount * 10
+    mult.points = (mult.points || 0) + pointsGained
+    let newLevel = 1
+    for (let i = LEVEL_THRESHOLDS.length - 1; i >= 1; i--) {
+      if (mult.points >= LEVEL_THRESHOLDS[i]) {
+        newLevel = i
+        break
+      }
+    }
+    mult.level = Math.max(mult.level || 1, newLevel)
 
     updated.progress = { ...updated.progress, multiplication: mult }
     saveUser(updated)
   }, [user, saveUser])
+
+  const addPoints = useCallback((module, pointsToAdd) => {
+    if (!user || pointsToAdd <= 0) return { leveledUp: false, newLevel: 1 }
+
+    const updated = ensureProgress({ ...user })
+    const mod = { ...(updated.progress[module] || defaultModuleProgress()) }
+    const oldLevel = mod.level || 1
+    mod.points = (mod.points || 0) + pointsToAdd
+    mod.correct = (mod.correct || 0) + Math.round(pointsToAdd / 10)
+
+    let newLevel = 1
+    for (let i = LEVEL_THRESHOLDS.length - 1; i >= 1; i--) {
+      if (mod.points >= LEVEL_THRESHOLDS[i]) {
+        newLevel = i
+        break
+      }
+    }
+    mod.level = Math.max(oldLevel, newLevel)
+    const leveledUp = mod.level > oldLevel
+
+    updated.progress = { ...updated.progress, [module]: mod }
+    saveUser(updated)
+
+    return { leveledUp, newLevel: mod.level, points: mod.points }
+  }, [user, saveUser])
+
+  const getModuleProgress = useCallback((module) => {
+    if (!user) return defaultModuleProgress()
+    return user.progress?.[module] || defaultModuleProgress()
+  }, [user])
+
+  const getPointsToNextLevel = useCallback((module) => {
+    const prog = getModuleProgress(module)
+    const currentLevel = prog.level || 1
+    if (currentLevel >= LEVEL_THRESHOLDS.length - 1) return 0
+    const nextThreshold = LEVEL_THRESHOLDS[currentLevel + 1]
+    return Math.max(0, nextThreshold - (prog.points || 0))
+  }, [getModuleProgress])
 
   return {
     user,
     loading,
     login,
     logout,
-    updateProgress,
+    updateMultiplicationProgress,
+    addPoints,
+    getModuleProgress,
+    getPointsToNextLevel,
+    LEVEL_THRESHOLDS,
     isLoggedIn: !!user?.name,
   }
 }
