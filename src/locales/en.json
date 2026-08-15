@@ -8,7 +8,16 @@
     "subtitle": "What is your name?",
     "placeholder": "Enter your name",
     "start": "Let's Start!",
-    "language": "Language"
+    "language": "Language",
+    "selectUser": "Who are you?",
+    "noUsers": "No users yet",
+    "addNew": "Add new user",
+    "edit": "Edit",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "save": "Save",
+    "confirmDeleteTitle": "Delete user?",
+    "confirmDeleteMessage": "All progress for this user will be lost. Are you sure?"
   },
   "home": {
     "greeting": "Hello, {{name}}!",
@@ -146,6 +155,7 @@
     "unlocked": "Unlocked"
   },
   "common": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "start": "Start →"
   }
 }
