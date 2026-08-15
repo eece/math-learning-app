@@ -1,0 +1,55 @@
+{
+  "app": {
+    "title": "Math Learning",
+    "subtitle": "Learn math the fun way!"
+  },
+  "welcome": {
+    "title": "Welcome!",
+    "subtitle": "What is your name?",
+    "placeholder": "Enter your name",
+    "start": "Let's Start!",
+    "language": "Language"
+  },
+  "home": {
+    "greeting": "Hello, {{name}}!",
+    "chooseModule": "Choose a module",
+    "multiplication": "Multiplication Tables",
+    "addition": "Addition",
+    "subtraction": "Subtraction",
+    "division": "Division",
+    "fourOps": "Four Operations",
+    "comingSoon": "Coming Soon",
+    "progress": "Your Progress",
+    "stars": "{{count}} stars",
+    "logout": "Change Name"
+  },
+  "multiplication": {
+    "title": "Multiplication Tables",
+    "selectTable": "Select a table",
+    "allTables": "All Tables (1-10)",
+    "learn": "Learn",
+    "practice": "Practice",
+    "back": "Back",
+    "tableOf": "Table of {{n}}",
+    "learnMode": "Study the table",
+    "practiceMode": "Practice time!",
+    "question": "What is {{a}} × {{b}}?",
+    "check": "Check",
+    "next": "Next",
+    "correct": "Correct! 🎉",
+    "wrong": "Oops! The answer is {{answer}}",
+    "score": "Score: {{score}} / {{total}}",
+    "finish": "Finish Practice",
+    "tryAgain": "Try Again",
+    "greatJob": "Great job, {{name}}!",
+    "youScored": "You scored {{score}} out of {{total}}",
+    "starsEarned": "You earned {{stars}} stars!",
+    "continue": "Continue",
+    "showTable": "Show Full Table",
+    "hideTable": "Hide Table",
+    "times": "×"
+  },
+  "common": {
+    "loading": "Loading..."
+  }
+}
