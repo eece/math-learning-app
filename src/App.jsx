@@ -12,14 +12,18 @@ function App() {
   const { t } = useTranslation()
   const {
     user,
+    users,
     loading,
-    login,
+    isLoggedIn,
+    selectUser,
+    addUser,
+    updateUserName,
+    deleteUser,
     logout,
     updateMultiplicationProgress,
     addPoints,
     getModuleProgress,
     getPointsToNextLevel,
-    isLoggedIn,
   } = useUser()
   const [currentModule, setCurrentModule] = useState(null)
 
@@ -34,7 +38,15 @@ function App() {
   }
 
   if (!isLoggedIn) {
-    return <Welcome onLogin={login} />
+    return (
+      <Welcome
+        users={users}
+        onSelectUser={selectUser}
+        onAddUser={addUser}
+        onUpdateUserName={updateUserName}
+        onDeleteUser={deleteUser}
+      />
+    )
   }
 
   if (currentModule === 'multiplication') {
