@@ -1,0 +1,55 @@
+{
+  "app": {
+    "title": "Matematik Öğrenme",
+    "subtitle": "Matematiği eğlenceli öğren!"
+  },
+  "welcome": {
+    "title": "Hoş Geldin!",
+    "subtitle": "Adın ne?",
+    "placeholder": "Adını yaz",
+    "start": "Başlayalım!",
+    "language": "Dil"
+  },
+  "home": {
+    "greeting": "Merhaba, {{name}}!",
+    "chooseModule": "Bir modül seç",
+    "multiplication": "Çarpım Tablosu",
+    "addition": "Toplama",
+    "subtraction": "Çıkarma",
+    "division": "Bölme",
+    "fourOps": "Dört İşlem",
+    "comingSoon": "Yakında",
+    "progress": "İlerlemen",
+    "stars": "{{count}} yıldız",
+    "logout": "İsim Değiştir"
+  },
+  "multiplication": {
+    "title": "Çarpım Tablosu",
+    "selectTable": "Bir tablo seç",
+    "allTables": "Tüm Tablolar (1-10)",
+    "learn": "Öğren",
+    "practice": "Pratik Yap",
+    "back": "Geri",
+    "tableOf": "{{n}}'ler Tablosu",
+    "learnMode": "Tabloyu incele",
+    "practiceMode": "Pratik zamanı!",
+    "question": "{{a}} × {{b}} kaç eder?",
+    "check": "Kontrol Et",
+    "next": "Sonraki",
+    "correct": "Doğru! 🎉",
+    "wrong": "Yanlış! Doğru cevap {{answer}}",
+    "score": "Skor: {{score}} / {{total}}",
+    "finish": "Pratiği Bitir",
+    "tryAgain": "Tekrar Dene",
+    "greatJob": "Harika iş, {{name}}!",
+    "youScored": "{{total}} sorudan {{score}} doğru yaptın",
+    "starsEarned": "{{stars}} yıldız kazandın!",
+    "continue": "Devam Et",
+    "showTable": "Tabloyu Göster",
+    "hideTable": "Tabloyu Gizle",
+    "times": "×"
+  },
+  "common": {
+    "loading": "Yükleniyor..."
+  }
+}
