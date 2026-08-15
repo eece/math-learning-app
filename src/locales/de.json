@@ -8,7 +8,16 @@
     "subtitle": "Wie heißt du?",
     "placeholder": "Dein Name",
     "start": "Los geht's!",
-    "language": "Sprache"
+    "language": "Sprache",
+    "selectUser": "Wer bist du?",
+    "noUsers": "Noch keine Benutzer",
+    "addNew": "Neuen Benutzer hinzufügen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "confirmDeleteTitle": "Benutzer löschen?",
+    "confirmDeleteMessage": "Der gesamte Fortschritt dieses Benutzers geht verloren. Bist du sicher?"
   },
   "home": {
     "greeting": "Hallo, {{name}}!",
@@ -146,6 +155,7 @@
     "unlocked": "Freigeschaltet"
   },
   "common": {
-    "loading": "Laden..."
+    "loading": "Laden...",
+    "start": "Start →"
   }
 }
