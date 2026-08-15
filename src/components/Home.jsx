@@ -139,7 +139,7 @@ export default function Home({ user, onSelectModule, onLogout, getModuleProgress
                     </span>
                   )}
                   {mod.available && (
-                    <span className="mt-3 text-sm font-medium opacity-90">Başla →</span>
+                    <span className="mt-3 text-sm font-medium opacity-90">{t('common.start')}</span>
                   )}
                 </div>
               </button>
