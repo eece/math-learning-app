@@ -8,7 +8,16 @@
     "subtitle": "Adın ne?",
     "placeholder": "Adını yaz",
     "start": "Başlayalım!",
-    "language": "Dil"
+    "language": "Dil",
+    "selectUser": "Kimsin?",
+    "noUsers": "Henüz kullanıcı yok",
+    "addNew": "Yeni kullanıcı ekle",
+    "edit": "Düzenle",
+    "delete": "Sil",
+    "cancel": "İptal",
+    "save": "Kaydet",
+    "confirmDeleteTitle": "Kullanıcıyı sil?",
+    "confirmDeleteMessage": "Bu kullanıcının tüm ilerlemesi silinecek. Emin misin?"
   },
   "home": {
     "greeting": "Merhaba, {{name}}!",
@@ -146,6 +155,7 @@
     "unlocked": "Açık"
   },
   "common": {
-    "loading": "Yükleniyor..."
+    "loading": "Yükleniyor...",
+    "start": "Başla →"
   }
 }
