@@ -5,6 +5,8 @@ import Welcome from './components/Welcome'
 import Home from './components/Home'
 import MultiplicationModule from './components/MultiplicationModule'
 import AdditionModule from './components/AdditionModule'
+import SubtractionModule from './components/SubtractionModule'
+import DivisionModule from './components/DivisionModule'
 
 function App() {
   const { t } = useTranslation()
@@ -49,6 +51,30 @@ function App() {
   if (currentModule === 'addition') {
     return (
       <AdditionModule
+        user={user}
+        onBack={() => setCurrentModule(null)}
+        addPoints={addPoints}
+        getModuleProgress={getModuleProgress}
+        getPointsToNextLevel={getPointsToNextLevel}
+      />
+    )
+  }
+
+  if (currentModule === 'subtraction') {
+    return (
+      <SubtractionModule
+        user={user}
+        onBack={() => setCurrentModule(null)}
+        addPoints={addPoints}
+        getModuleProgress={getModuleProgress}
+        getPointsToNextLevel={getPointsToNextLevel}
+      />
+    )
+  }
+
+  if (currentModule === 'division') {
+    return (
+      <DivisionModule
         user={user}
         onBack={() => setCurrentModule(null)}
         addPoints={addPoints}
