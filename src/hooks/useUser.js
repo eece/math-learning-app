@@ -2,8 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 
 const STORAGE_KEY = 'mathApp_user'
 
-// Level thresholds (cumulative points needed to reach that level)
-const LEVEL_THRESHOLDS = [0, 0, 80, 200, 400, 700] // index 1=level1, 2=level2...
+const LEVEL_THRESHOLDS = [0, 0, 80, 200, 400, 700]
 
 const defaultModuleProgress = () => ({
   points: 0,
@@ -25,6 +24,8 @@ const defaultProgress = () => ({
     level: 1,
   },
   addition: defaultModuleProgress(),
+  subtraction: defaultModuleProgress(),
+  division: defaultModuleProgress(),
 })
 
 function ensureProgress(user) {
@@ -32,9 +33,9 @@ function ensureProgress(user) {
   if (!user.progress.multiplication) {
     user.progress.multiplication = defaultProgress().multiplication
   }
-  if (!user.progress.addition) {
-    user.progress.addition = defaultModuleProgress()
-  }
+  ;['addition', 'subtraction', 'division'].forEach((m) => {
+    if (!user.progress[m]) user.progress[m] = defaultModuleProgress()
+  })
   if (user.progress.multiplication.points === undefined) {
     user.progress.multiplication.points = 0
     user.progress.multiplication.level = 1
@@ -81,7 +82,6 @@ export function useUser() {
 
   const updateMultiplicationProgress = useCallback((table, correctCount, totalQuestions) => {
     if (!user) return
-
     const scorePercent = Math.round((correctCount / totalQuestions) * 100)
     let stars = 0
     if (scorePercent >= 90) stars = 3
