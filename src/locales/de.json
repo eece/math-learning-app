@@ -1,0 +1,55 @@
+{
+  "app": {
+    "title": "Mathe Lernen",
+    "subtitle": "Lerne Mathe mit Spaß!"
+  },
+  "welcome": {
+    "title": "Willkommen!",
+    "subtitle": "Wie heißt du?",
+    "placeholder": "Dein Name",
+    "start": "Los geht's!",
+    "language": "Sprache"
+  },
+  "home": {
+    "greeting": "Hallo, {{name}}!",
+    "chooseModule": "Wähle ein Modul",
+    "multiplication": "Einmaleins",
+    "addition": "Addition",
+    "subtraction": "Subtraktion",
+    "division": "Division",
+    "fourOps": "Vier Grundrechenarten",
+    "comingSoon": "Demnächst",
+    "progress": "Dein Fortschritt",
+    "stars": "{{count}} Sterne",
+    "logout": "Name ändern"
+  },
+  "multiplication": {
+    "title": "Einmaleins",
+    "selectTable": "Tabelle wählen",
+    "allTables": "Alle Tabellen (1-10)",
+    "learn": "Lernen",
+    "practice": "Üben",
+    "back": "Zurück",
+    "tableOf": "Das {{n}}er Einmaleins",
+    "learnMode": "Tabelle studieren",
+    "practiceMode": "Übungszeit!",
+    "question": "Was ist {{a}} × {{b}}?",
+    "check": "Prüfen",
+    "next": "Weiter",
+    "correct": "Richtig! 🎉",
+    "wrong": "Ups! Die Antwort ist {{answer}}",
+    "score": "Punktestand: {{score}} / {{total}}",
+    "finish": "Übung beenden",
+    "tryAgain": "Nochmal versuchen",
+    "greatJob": "Super gemacht, {{name}}!",
+    "youScored": "Du hast {{score}} von {{total}} Punkten",
+    "starsEarned": "Du hast {{stars}} Sterne verdient!",
+    "continue": "Weiter",
+    "showTable": "Tabelle anzeigen",
+    "hideTable": "Tabelle verbergen",
+    "times": "×"
+  },
+  "common": {
+    "loading": "Laden..."
+  }
+}
